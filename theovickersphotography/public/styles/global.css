@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: 'Fira Code', monospace; /* Apply the new font */
+  background: #fdfdfd;
+  color: #222;
+}
+
+header {
+  text-align: center;
+  padding: 1rem 1rem; /* Reduced padding for a smaller header */
+  padding-top: 1.7rem; /* Added padding to the top for spacing */
+}
+
+header h1 {
+  font-size: 2.4rem; /* Large font size for 'Theo Vickers' */
+  margin: 0;
+}
+
+header p {
+  font-size: 1.0rem; /* Smaller font size for 'PHOTOGRAPHY' */
+  margin: 0;
+  font-weight: normal; /* Ensures 'PHOTOGRAPHY' is not bold */
+  letter-spacing: 1px; /* Slight spacing for style */
+  text-transform: uppercase; /* To give it a clean, coder-style feel */
+}
+
+.gallery {
+  column-count: 1;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+@media (min-width: 600px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  break-inside: avoid;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensures images scale with the viewport */
+img {
+  max-width: 100%;     /* Image cannot exceed the width of its container */
+  height: auto;        /* Maintains aspect ratio */
+  display: block;      /* Removes extra space below the image */
+  margin: 0 auto;      /* Centers the image */
+}
+
+/* Prevents horizontal scrolling */
+body, html {
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}

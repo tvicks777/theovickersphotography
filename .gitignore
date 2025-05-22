@@ -19,4 +19,4 @@ dist/
 public/images/a9x3d2/*.jpg
 
 # allow thumbnails
-!public/images/a9x3d2/thumbs/*.jpg
+!public/images/a9x3d2/*.jpg

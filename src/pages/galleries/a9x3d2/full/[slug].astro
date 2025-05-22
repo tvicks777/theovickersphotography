@@ -1,20 +1,21 @@
 ---
+import fs from 'fs';
+import path from 'path';
+
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'photo1' } },
-    { params: { slug: 'photo2' } },
-    { params: { slug: 'photo3' } },
-    { params: { slug: 'photo4' } },
-    { params: { slug: 'photo5' } },
-    { params: { slug: 'photo6' } },
-    { params: { slug: 'photo7' } },
-    { params: { slug: 'photo8' } },
-    { params: { slug: 'photo9' } },
-    { params: { slug: 'photo10' } },
-  ];
+  const dir = path.resolve('./public/images/a9x3d2/medium');
+  const files = fs.readdirSync(dir)
+    .filter(f => f.endsWith('.jpg') && f.startsWith('photo'))
+    .map(f => ({
+      params: { slug: f.replace('.jpg', '') }
+    }));
+
+  return files;
 }
 
-const photos = ['photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'photo6', 'photo7', 'photo8', 'photo9', 'photo10'];
+const photos = fs.readdirSync(path.resolve('./public/images/a9x3d2/medium'))
+  .filter(f => f.endsWith('.jpg') && f.startsWith('photo'))
+  .map(f => f.replace('.jpg', ''));
 const { slug } = Astro.params;
 const index = photos.indexOf(slug);
 const prevSlug = index > 0 ? photos[index - 1] : null;
@@ -103,7 +104,7 @@ const nextSlug = index < photos.length - 1 ? photos[index + 1] : null;
     </style>
   </head>
   <body>
-    <img src={`/images/a9x3d2/${slug}.jpg`} alt={`Photo ${slug}`} />
+    <img src={`/images/a9x3d2/medium/${slug}.jpg`} alt={`Photo ${slug}`} />
     <div class="actions">
       <div class="nav-row">
         {prevSlug && <a href={`/galleries/a9x3d2/full/${prevSlug}`}>&larr; Previous</a>}

@@ -1,6 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const photos = Array.from({ length: 10 }, (_, i) => `photo${i + 1}.jpg`);
+import fs from 'fs';
+import path from 'path';
+
+const thumbsDir = path.resolve('./public/images/a9x3d2/thumbs');
+const photos = fs.readdirSync(thumbsDir).filter(file => file.endsWith('.jpg')).sort();
 ---
 
 <Layout>

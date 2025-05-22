@@ -1,0 +1,38 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+// Define the path to your images folder
+const imageDir = path.resolve('./public/images');
+
+// Read all image filenames
+const imageFiles = fs.readdirSync(imageDir).filter((file) =>
+  /\.(jpe?g|png|gif|webp)$/i.test(file)
+);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theo Vickers | Photography</title>
+    
+    <!-- Add the link to Fira Code font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Link to your global CSS -->
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Theo Vickers</h1>
+      <p>PHOTOGRAPHY</p>
+    </header>
+
+    <main class="gallery">
+      {imageFiles.map((filename) => (
+        <img src={`/images/${filename}`} alt={filename} />
+      ))}
+    </main>
+  </body>
+</html>

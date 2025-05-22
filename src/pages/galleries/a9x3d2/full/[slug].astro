@@ -1,0 +1,116 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'photo1' } },
+    { params: { slug: 'photo2' } },
+    { params: { slug: 'photo3' } },
+    { params: { slug: 'photo4' } },
+    { params: { slug: 'photo5' } },
+    { params: { slug: 'photo6' } },
+    { params: { slug: 'photo7' } },
+    { params: { slug: 'photo8' } },
+    { params: { slug: 'photo9' } },
+    { params: { slug: 'photo10' } },
+  ];
+}
+
+const photos = ['photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'photo6', 'photo7', 'photo8', 'photo9', 'photo10'];
+const { slug } = Astro.params;
+const index = photos.indexOf(slug);
+const prevSlug = index > 0 ? photos[index - 1] : null;
+const nextSlug = index < photos.length - 1 ? photos[index + 1] : null;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{slug}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Fira Code', monospace;
+        background: #111;
+        color: #fdfdfd;
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+      img {
+        max-width: 90vw;
+        max-height: 65vh;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        margin-bottom: 0.75rem;
+      }
+
+      nav, p {
+        margin: 0.25rem 0;
+      }
+
+      a {
+        display: inline-block;
+        margin: 0.25rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+        text-decoration: none;
+        background: #333;
+        color: #fff;
+        border-radius: 4px;
+      }
+
+      a:hover {
+        background: #555;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.75rem;
+      }
+
+      .nav-row {
+        display: flex;
+        gap: 0.6rem;
+      }
+
+      .actions a {
+        color: #fff;
+        background: #222;
+        text-decoration: none;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        transition: background 0.2s ease;
+      }
+
+      .actions a:hover {
+        background: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <img src={`/images/a9x3d2/${slug}.jpg`} alt={`Photo ${slug}`} />
+    <div class="actions">
+      <div class="nav-row">
+        {prevSlug && <a href={`/galleries/a9x3d2/full/${prevSlug}`}>&larr; Previous</a>}
+        {nextSlug && <a href={`/galleries/a9x3d2/full/${nextSlug}`}>Next &rarr;</a>}
+      </div>
+      <a href={`/images/a9x3d2/${slug}.jpg`} download={`${slug}.jpg`}>Download Photo</a>
+      <a href="/galleries/a9x3d2">Back to Gallery</a>
+    </div>
+  </body>
+</html>

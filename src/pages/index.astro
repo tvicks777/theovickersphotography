@@ -29,10 +29,14 @@ const imageFiles = fs.readdirSync(imageDir).filter((file) =>
       <p>PHOTOGRAPHY</p>
     </header>
 
-    <main class="gallery">
-      {imageFiles.map((filename) => (
-        <img src={`/images/${filename}`} alt={filename} />
-      ))}
+    <main style="text-align: center; padding: 3rem;">
+      <h2>Coming Soon</h2>
+      <p>
+        This site is currently under construction. In the meantime, please check out my 
+        <a href="https://www.instagram.com/theovickersphotography" target="_blank" rel="noopener noreferrer">
+          Instagram
+        </a>
+      </p>
     </main>
   </body>
 </html>

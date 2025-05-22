@@ -7,11 +7,13 @@ const thumbsDir = path.resolve('./public/images/a9x3d2/thumbs');
 const photos = fs.readdirSync(thumbsDir).filter(file => file.endsWith('.jpg')).sort();
 ---
 
+<head>
+  <meta charset="UTF-8" />
+  <title>Theo Vickers | EUMS Summer Concert 2025</title>
+  <meta name="robots" content="noindex, nofollow" />
+</head>
+
 <Layout>
-  <head>
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Theo Vickers | EUMS Summer Concert 2025</title>
-  </head>
 
   <header class="site-header">
     <h1 style="text-align: center;">Theo Vickers Photography</h1>
@@ -117,5 +119,5 @@ const photos = fs.readdirSync(thumbsDir).filter(file => file.endsWith('.jpg')).s
     a button:hover {
       background-color: #555;
     }
-  </style>
+</style>
 </Layout>

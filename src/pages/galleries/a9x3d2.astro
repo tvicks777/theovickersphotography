@@ -27,7 +27,7 @@ const photos = fs.readdirSync(thumbsDir).filter(file => file.endsWith('.jpg')).s
   <div class="gallery">
     {photos.map(photo => (
       <a href={`/galleries/a9x3d2/full/${photo.replace('.jpg', '')}`}>
-        <img src={`/images/a9x3d2/thumbs/${photo}`} alt={`Concert ${photo}`} />
+        <img src={`/images/a9x3d2/thumbs/${photo}`} alt={`Concert ${photo}`} loading="lazy" />
       </a>
     ))}
   </div>
